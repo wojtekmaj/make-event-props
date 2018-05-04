@@ -1,0 +1,44 @@
+{
+  "name": "make-event-props",
+  "version": "1.0.0",
+  "description": "Returns an object with on-event callback props curried with provided args.",
+  "main": "dist/entry.js",
+  "es6": "src/entry.js",
+  "scripts": {
+    "build": "babel src -d dist --ignore **/__tests__",
+    "prepublishOnly": "npm run build",
+    "test": "npm run test-eslint && npm run test-jest",
+    "test-eslint": "eslint ./src",
+    "test-jest": "jest",
+    "test-jest-coverage": "jest --coverage"
+  },
+  "keywords": [
+    "react",
+    "event",
+    "event props"
+  ],
+  "author": {
+    "name": "Wojciech Maj",
+    "email": "kontakt@wojtekmaj.pl"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "jest": "^22.4.3"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/",
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wojtekmaj/merge-class-names.git"
+  }
+}
