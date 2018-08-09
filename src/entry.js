@@ -6,18 +6,19 @@ export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTou
 /**
  * Returns an object with on-event callback props curried with provided args.
  * @param {Object} props Props passed to a component.
- * @param {Function=} getArgs A function that returns argument(s) on-event callbacks shall be curried with.
+ * @param {Function=} getArgs A function that returns argument(s) on-event callbacks
+ *   shall be curried with.
  */
 const makeEventProps = (props, getArgs) => {
   const eventProps = {};
 
-  [... mouseEvents, ...touchEvents].forEach((eventName) => {
+  [...mouseEvents, ...touchEvents].forEach((eventName) => {
     if (props[eventName]) {
       eventProps[eventName] = event => (
         getArgs ?
           props[eventName](event, getArgs(eventName)) :
           props[eventName](event)
-      )
+      );
     }
   });
 
