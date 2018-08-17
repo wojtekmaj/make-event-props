@@ -15,9 +15,9 @@ const makeEventProps = (props, getArgs) => {
   [...mouseEvents, ...touchEvents].forEach((eventName) => {
     if (props[eventName]) {
       eventProps[eventName] = event => (
-        getArgs ?
-          props[eventName](event, getArgs(eventName)) :
-          props[eventName](event)
+        getArgs
+          ? props[eventName](event, getArgs(eventName))
+          : props[eventName](event)
       );
     }
   });
