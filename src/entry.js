@@ -2,6 +2,8 @@
 export const mouseEvents = ['onClick', 'onContextMenu', 'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp'];
 // As defined on the list of supported touch events: https://reactjs.org/docs/events.html#touch-events
 export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'];
+// As defined on the list of supported keyboard events: https://reactjs.org/docs/events.html#keyboard-events
+export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'];
 
 /**
  * Returns an object with on-event callback props curried with provided args.
@@ -12,7 +14,7 @@ export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTou
 const makeEventProps = (props, getArgs) => {
   const eventProps = {};
 
-  [...mouseEvents, ...touchEvents].forEach((eventName) => {
+  [...mouseEvents, ...touchEvents, ...keyboardEvents].forEach((eventName) => {
     if (props[eventName]) {
       eventProps[eventName] = event => (
         getArgs
