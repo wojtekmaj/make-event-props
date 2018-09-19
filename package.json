@@ -42,6 +42,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wojtekmaj/merge-class-names.git"
+    "url": "https://github.com/wojtekmaj/make-event-props.git"
   }
 }
