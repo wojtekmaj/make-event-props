@@ -1,6 +1,6 @@
-// As defined on the list of supported mouse events: https://facebook.github.io/react/docs/events.html#mouse-events
+// As defined on the list of supported mouse events: https://reactjs.org/docs/events.html#mouse-events
 export const mouseEvents = ['onClick', 'onContextMenu', 'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp'];
-// As defined on the list of supported touch events: https://facebook.github.io/react/docs/events.html#touch-events
+// As defined on the list of supported touch events: https://reactjs.org/docs/events.html#touch-events
 export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'];
 
 /**
