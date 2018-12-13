@@ -4,6 +4,8 @@ export const mouseEvents = ['onClick', 'onContextMenu', 'onDoubleClick', 'onDrag
 export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'];
 // As defined on the list of supported keyboard events: https://reactjs.org/docs/events.html#keyboard-events
 export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'];
+// As defined on the list of supported keyboard events: https://reactjs.org/docs/events.html#focus-events
+export const focusEvents = ['onFocus', 'onBlur'];
 
 /**
  * Returns an object with on-event callback props curried with provided args.
@@ -14,7 +16,7 @@ export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'];
 const makeEventProps = (props, getArgs) => {
   const eventProps = {};
 
-  [...mouseEvents, ...touchEvents, ...keyboardEvents].forEach((eventName) => {
+  [...mouseEvents, ...touchEvents, ...keyboardEvents, ...focusEvents].forEach((eventName) => {
     if (props[eventName]) {
       eventProps[eventName] = event => (
         getArgs
