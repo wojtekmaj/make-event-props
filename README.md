@@ -1,3 +1,7 @@
+[![npm](https://img.shields.io/npm/v/make-event-props.svg)](https://www.npmjs.com/package/make-event-props) ![downloads](https://img.shields.io/npm/dt/make-event-props.svg) ![build](https://travis-ci.com/wojtekmaj/make-event-props.svg?branch=master) ![dependencies](https://img.shields.io/david/wojtekmaj/make-event-props.svg
+) ![dev dependencies](https://img.shields.io/david/dev/wojtekmaj/make-event-props.svg
+) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+
 # Make-Event-Props
 A function that, given props, returns an object of event callback props optionally curried with additional arguments.
 
