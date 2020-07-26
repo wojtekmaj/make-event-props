@@ -42,5 +42,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wojtekmaj/make-event-props.git"
-  }
+  },
+  "funding": "https://github.com/wojtekmaj/make-event-props?sponsor=1"
 }
