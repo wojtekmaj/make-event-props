@@ -1,12 +1,11 @@
 {
-  "extends": "airbnb-base",
   "env": {
     "browser": true,
     "es6": true,
     "jest": true
   },
-  "rules": {
-    "prefer-destructuring": "warn",
-    "prefer-spread": "warn"
-  }
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "extends": "airbnb-base"
 }
