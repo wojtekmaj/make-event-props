@@ -1,4 +1,4 @@
-import makeEventProps from '../entry';
+import makeEventProps from './entry';
 
 describe('makeEventProps', () => {
   const fakeEvent = {};
