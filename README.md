@@ -13,7 +13,7 @@ This package allows you to pass event callback props to a rendered DOM element w
 * Create your event props object:
     ```js
     get eventProps() {
-      return makeEventProps(this.props, () => this.state.pdf);
+      return makeEventProps(this.props, (eventName) => additionalArgs);
     }
     ```
 * Use your event props:
