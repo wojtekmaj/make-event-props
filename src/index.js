@@ -5,23 +5,90 @@ export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'];
 export const focusEvents = ['onFocus', 'onBlur'];
 export const formEvents = ['onChange', 'onInput', 'onInvalid', 'onReset', 'onSubmit'];
 export const genericEvents = ['onError', 'onLoad'];
-export const mouseEvents = ['onClick', 'onContextMenu', 'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp'];
-export const pointerEvents = ['onPointerDown', 'onPointerMove', 'onPointerUp', 'onPointerCancel', 'onGotPointerCapture', 'onLostPointerCapture', 'onPointerEnter', 'onPointerLeave', 'onPointerOver', 'onPointerOut'];
+export const mouseEvents = [
+  'onClick',
+  'onContextMenu',
+  'onDoubleClick',
+  'onDrag',
+  'onDragEnd',
+  'onDragEnter',
+  'onDragExit',
+  'onDragLeave',
+  'onDragOver',
+  'onDragStart',
+  'onDrop',
+  'onMouseDown',
+  'onMouseEnter',
+  'onMouseLeave',
+  'onMouseMove',
+  'onMouseOut',
+  'onMouseOver',
+  'onMouseUp',
+];
+export const pointerEvents = [
+  'onPointerDown',
+  'onPointerMove',
+  'onPointerUp',
+  'onPointerCancel',
+  'onGotPointerCapture',
+  'onLostPointerCapture',
+  'onPointerEnter',
+  'onPointerLeave',
+  'onPointerOver',
+  'onPointerOut',
+];
 export const selectionEvents = ['onSelect'];
 export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'];
 export const uiEvents = ['onScroll'];
 export const wheelEvents = ['onWheel'];
-export const mediaEvents = ['onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting'];
+export const mediaEvents = [
+  'onAbort',
+  'onCanPlay',
+  'onCanPlayThrough',
+  'onDurationChange',
+  'onEmptied',
+  'onEncrypted',
+  'onEnded',
+  'onError',
+  'onLoadedData',
+  'onLoadedMetadata',
+  'onLoadStart',
+  'onPause',
+  'onPlay',
+  'onPlaying',
+  'onProgress',
+  'onRateChange',
+  'onSeeked',
+  'onSeeking',
+  'onStalled',
+  'onSuspend',
+  'onTimeUpdate',
+  'onVolumeChange',
+  'onWaiting',
+];
 export const imageEvents = ['onLoad', 'onError'];
 export const animationEvents = ['onAnimationStart', 'onAnimationEnd', 'onAnimationIteration'];
 export const transitionEvents = ['onTransitionEnd'];
 export const otherEvents = ['onToggle'];
 
 export const allEvents = [
-  ...clipboardEvents, ...compositionEvents, ...keyboardEvents, ...focusEvents, ...formEvents,
-  ...genericEvents, ...mouseEvents, ...pointerEvents, ...selectionEvents, ...touchEvents,
-  ...uiEvents, ...wheelEvents, ...mediaEvents, ...imageEvents, ...animationEvents,
-  ...transitionEvents, ...otherEvents,
+  ...clipboardEvents,
+  ...compositionEvents,
+  ...keyboardEvents,
+  ...focusEvents,
+  ...formEvents,
+  ...genericEvents,
+  ...mouseEvents,
+  ...pointerEvents,
+  ...selectionEvents,
+  ...touchEvents,
+  ...uiEvents,
+  ...wheelEvents,
+  ...mediaEvents,
+  ...imageEvents,
+  ...animationEvents,
+  ...transitionEvents,
+  ...otherEvents,
 ];
 
 /**
