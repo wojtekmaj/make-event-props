@@ -97,7 +97,7 @@ export const allEvents = [
  * @param {Function=} getArgs A function that returns argument(s) on-event callbacks
  *   shall be curried with.
  */
-const makeEventProps = (props, getArgs) => {
+export default function makeEventProps(props, getArgs) {
   const eventProps = {};
 
   allEvents.forEach((eventName) => {
@@ -114,6 +114,4 @@ const makeEventProps = (props, getArgs) => {
   });
 
   return eventProps;
-};
-
-export default makeEventProps;
+}
