@@ -54,4 +54,26 @@ describe('makeEventProps', () => {
 
     expect(props.onClick).toHaveBeenCalledWith(fakeEvent, args);
   });
+
+  it('should not filter out valid event props', () => {
+    const props = {
+      onClick: jest.fn(),
+    };
+
+    const result = makeEventProps(props);
+
+    // @ts-expect-no-error
+    result.onClick;
+  });
+
+  it('should filter out invalid event props', () => {
+    const props = {
+      someInvalidProp: jest.fn(),
+    };
+
+    const result = makeEventProps(props);
+
+    // @ts-expect-error-next-line
+    result.someInvalidProp;
+  });
 });
