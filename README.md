@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/make-event-props.svg)](https://www.npmjs.com/package/make-event-props) ![downloads](https://img.shields.io/npm/dt/make-event-props.svg) [![CI](https://github.com/wojtekmaj/make-event-props/workflows/CI/badge.svg)](https://github.com/wojtekmaj/make-event-props/actions) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![npm](https://img.shields.io/npm/v/make-event-props.svg)](https://www.npmjs.com/package/make-event-props) ![downloads](https://img.shields.io/npm/dt/make-event-props.svg) [![CI](https://github.com/wojtekmaj/make-event-props/workflows/CI/badge.svg)](https://github.com/wojtekmaj/make-event-props/actions)
 
 # Make-Event-Props
 
