@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest';
 import makeEventProps from '.';
 
 describe('makeEventProps', () => {
@@ -5,8 +6,8 @@ describe('makeEventProps', () => {
 
   it('returns object with valid and only valid event callbacks', () => {
     const props = {
-      onClick: jest.fn(),
-      someInvalidProp: jest.fn(),
+      onClick: vi.fn(),
+      someInvalidProp: vi.fn(),
     };
     const result = makeEventProps(props);
 
@@ -15,10 +16,10 @@ describe('makeEventProps', () => {
 
   it('calls getArgs function on event invoke if given', () => {
     const props = {
-      onClick: jest.fn(),
-      someInvalidProp: jest.fn(),
+      onClick: vi.fn(),
+      someInvalidProp: vi.fn(),
     };
-    const getArgs = jest.fn();
+    const getArgs = vi.fn();
     const result = makeEventProps(props, getArgs);
 
     // getArgs shall not be invoked before a given event is fired
@@ -32,7 +33,7 @@ describe('makeEventProps', () => {
 
   it('properly calls callbacks given in props given no getArgs function', () => {
     const props = {
-      onClick: jest.fn(),
+      onClick: vi.fn(),
     };
     const result = makeEventProps(props);
 
@@ -43,9 +44,9 @@ describe('makeEventProps', () => {
 
   it('properly calls callbacks given in props given getArgs function', () => {
     const props = {
-      onClick: jest.fn(),
+      onClick: vi.fn(),
     };
-    const getArgs = jest.fn();
+    const getArgs = vi.fn();
     const args = {};
     getArgs.mockReturnValue(args);
     const result = makeEventProps(props, getArgs);
@@ -57,7 +58,7 @@ describe('makeEventProps', () => {
 
   it('should not filter out valid event props', () => {
     const props = {
-      onClick: jest.fn(),
+      onClick: vi.fn(),
     };
 
     const result = makeEventProps(props);
@@ -68,7 +69,7 @@ describe('makeEventProps', () => {
 
   it('should filter out invalid event props', () => {
     const props = {
-      someInvalidProp: jest.fn(),
+      someInvalidProp: vi.fn(),
     };
 
     const result = makeEventProps(props);
