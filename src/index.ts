@@ -99,7 +99,7 @@ export const allEvents = [
   ...otherEvents,
 ] as const;
 
-type AllEvents = typeof allEvents[number];
+type AllEvents = (typeof allEvents)[number];
 
 type EventHandler = (event: unknown, ...args: unknown[]) => void;
 
