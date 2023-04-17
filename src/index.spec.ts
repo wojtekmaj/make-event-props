@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import makeEventProps from '.';
+import makeEventProps from './index';
 
 describe('makeEventProps', () => {
   const fakeEvent = {};
