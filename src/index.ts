@@ -101,7 +101,7 @@ export const allEvents = [
 
 type AllEvents = (typeof allEvents)[number];
 
-type EventHandler = (event: unknown, ...args: unknown[]) => void;
+type EventHandler = (event: unknown, args: unknown) => void;
 
 type Props = Record<string, unknown> & {
   [K in AllEvents]?: EventHandler;
