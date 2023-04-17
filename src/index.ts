@@ -5,46 +5,10 @@ export const compositionEvents = [
   'onCompositionStart',
   'onCompositionUpdate',
 ] as const;
-export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'] as const;
 export const focusEvents = ['onFocus', 'onBlur'] as const;
-export const formEvents = ['onChange', 'onInput', 'onInvalid', 'onReset', 'onSubmit'] as const;
-export const genericEvents = ['onError', 'onLoad'] as const;
-export const mouseEvents = [
-  'onClick',
-  'onContextMenu',
-  'onDoubleClick',
-  'onDrag',
-  'onDragEnd',
-  'onDragEnter',
-  'onDragExit',
-  'onDragLeave',
-  'onDragOver',
-  'onDragStart',
-  'onDrop',
-  'onMouseDown',
-  'onMouseEnter',
-  'onMouseLeave',
-  'onMouseMove',
-  'onMouseOut',
-  'onMouseOver',
-  'onMouseUp',
-] as const;
-export const pointerEvents = [
-  'onPointerDown',
-  'onPointerMove',
-  'onPointerUp',
-  'onPointerCancel',
-  'onGotPointerCapture',
-  'onLostPointerCapture',
-  'onPointerEnter',
-  'onPointerLeave',
-  'onPointerOver',
-  'onPointerOut',
-] as const;
-export const selectionEvents = ['onSelect'] as const;
-export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'] as const;
-export const uiEvents = ['onScroll'] as const;
-export const wheelEvents = ['onWheel'] as const;
+export const formEvents = ['onInput', 'onInvalid', 'onReset', 'onSubmit'] as const;
+export const imageEvents = ['onLoad', 'onError'] as const;
+export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'] as const;
 export const mediaEvents = [
   'onAbort',
   'onCanPlay',
@@ -70,7 +34,44 @@ export const mediaEvents = [
   'onVolumeChange',
   'onWaiting',
 ] as const;
-export const imageEvents = ['onLoad', 'onError'] as const;
+export const mouseEvents = [
+  'onClick',
+  'onContextMenu',
+  'onDoubleClick',
+  'onMouseDown',
+  'onMouseEnter',
+  'onMouseLeave',
+  'onMouseMove',
+  'onMouseOut',
+  'onMouseOver',
+  'onMouseUp',
+] as const;
+export const dragEvents = [
+  'onDrag',
+  'onDragEnd',
+  'onDragEnter',
+  'onDragExit',
+  'onDragLeave',
+  'onDragOver',
+  'onDragStart',
+  'onDrop',
+] as const;
+export const selectionEvents = ['onSelect'] as const;
+export const touchEvents = ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'] as const;
+export const pointerEvents = [
+  'onPointerDown',
+  'onPointerMove',
+  'onPointerUp',
+  'onPointerCancel',
+  'onGotPointerCapture',
+  'onLostPointerCapture',
+  'onPointerEnter',
+  'onPointerLeave',
+  'onPointerOver',
+  'onPointerOut',
+] as const;
+export const uiEvents = ['onScroll'] as const;
+export const wheelEvents = ['onWheel'] as const;
 export const animationEvents = [
   'onAnimationStart',
   'onAnimationEnd',
@@ -78,24 +79,26 @@ export const animationEvents = [
 ] as const;
 export const transitionEvents = ['onTransitionEnd'] as const;
 export const otherEvents = ['onToggle'] as const;
+export const changeEvents = ['onChange'] as const;
 
 export const allEvents = [
   ...clipboardEvents,
   ...compositionEvents,
-  ...keyboardEvents,
   ...focusEvents,
   ...formEvents,
-  ...genericEvents,
+  ...imageEvents,
+  ...keyboardEvents,
+  ...mediaEvents,
   ...mouseEvents,
-  ...pointerEvents,
+  ...dragEvents,
   ...selectionEvents,
   ...touchEvents,
+  ...pointerEvents,
   ...uiEvents,
   ...wheelEvents,
-  ...mediaEvents,
-  ...imageEvents,
   ...animationEvents,
   ...transitionEvents,
+  ...changeEvents,
   ...otherEvents,
 ] as const;
 
