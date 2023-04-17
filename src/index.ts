@@ -5,14 +5,7 @@ export const compositionEvents = [
   'onCompositionStart',
   'onCompositionUpdate',
 ] as const;
-export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'] as const;
-export const focusEvents = ['onFocus', 'onBlur'] as const;
-export const formEvents = ['onChange', 'onInput', 'onInvalid', 'onReset', 'onSubmit'] as const;
-export const genericEvents = ['onError', 'onLoad'] as const;
-export const mouseEvents = [
-  'onClick',
-  'onContextMenu',
-  'onDoubleClick',
+export const dragEvents = [
   'onDrag',
   'onDragEnd',
   'onDragEnter',
@@ -21,6 +14,16 @@ export const mouseEvents = [
   'onDragOver',
   'onDragStart',
   'onDrop',
+] as const;
+export const keyboardEvents = ['onKeyDown', 'onKeyPress', 'onKeyUp'] as const;
+export const focusEvents = ['onFocus', 'onBlur'] as const;
+export const formEvents = ['onInput', 'onInvalid', 'onReset', 'onSubmit'] as const;
+export const changeEvents = ['onChange'] as const;
+export const genericEvents = ['onError', 'onLoad'] as const;
+export const mouseEvents = [
+  'onClick',
+  'onContextMenu',
+  'onDoubleClick',
   'onMouseDown',
   'onMouseEnter',
   'onMouseLeave',
@@ -82,9 +85,11 @@ export const otherEvents = ['onToggle'] as const;
 export const allEvents = [
   ...clipboardEvents,
   ...compositionEvents,
+  ...dragEvents,
   ...keyboardEvents,
   ...focusEvents,
   ...formEvents,
+  ...changeEvents,
   ...genericEvents,
   ...mouseEvents,
   ...pointerEvents,
