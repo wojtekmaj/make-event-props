@@ -1,3 +1,5 @@
+import type * as React from 'react';
+
 // As defined on the list of supported events: https://reactjs.org/docs/events.html
 export const clipboardEvents = ['onCopy', 'onCut', 'onPaste'] as const;
 export const compositionEvents = [
@@ -102,12 +104,130 @@ export const allEvents = [
   ...otherEvents,
 ] as const;
 
-type AllEvents = (typeof allEvents)[number];
+type EventMap<T = any> = {
+  // Clipboard Events
+  onCopy: React.ClipboardEvent<T>;
+  onCut: React.ClipboardEvent<T>;
+  onPaste: React.ClipboardEvent<T>;
 
-type EventHandler = (event: unknown, args: unknown) => void;
+  // Composition Events
+  onCompositionEnd: React.CompositionEvent<T>;
+  onCompositionStart: React.CompositionEvent<T>;
+  onCompositionUpdate: React.CompositionEvent<T>;
+
+  // Focus Events
+  onFocus: React.FocusEvent<T>;
+  onBlur: React.FocusEvent<T>;
+
+  // Form Events
+  onInput: React.FormEvent<T>;
+  onInvalid: React.FormEvent<T>;
+  onReset: React.FormEvent<T>;
+  onSubmit: React.FormEvent<T>;
+
+  // Image Events
+  onLoad: React.SyntheticEvent<T>;
+  onError: React.SyntheticEvent<T>; // also a Media Event
+
+  // Keyboard Events
+  onKeyDown: React.KeyboardEvent<T>;
+  onKeyPress: React.KeyboardEvent<T>;
+  onKeyUp: React.KeyboardEvent<T>;
+
+  // Media Events
+  onAbort: React.SyntheticEvent<T>;
+  onCanPlay: React.SyntheticEvent<T>;
+  onCanPlayThrough: React.SyntheticEvent<T>;
+  onDurationChange: React.SyntheticEvent<T>;
+  onEmptied: React.SyntheticEvent<T>;
+  onEncrypted: React.SyntheticEvent<T>;
+  onEnded: React.SyntheticEvent<T>;
+  onLoadedData: React.SyntheticEvent<T>;
+  onLoadedMetadata: React.SyntheticEvent<T>;
+  onLoadStart: React.SyntheticEvent<T>;
+  onPause: React.SyntheticEvent<T>;
+  onPlay: React.SyntheticEvent<T>;
+  onPlaying: React.SyntheticEvent<T>;
+  onProgress: React.SyntheticEvent<T>;
+  onRateChange: React.SyntheticEvent<T>;
+  onSeeked: React.SyntheticEvent<T>;
+  onSeeking: React.SyntheticEvent<T>;
+  onStalled: React.SyntheticEvent<T>;
+  onSuspend: React.SyntheticEvent<T>;
+  onTimeUpdate: React.SyntheticEvent<T>;
+  onVolumeChange: React.SyntheticEvent<T>;
+  onWaiting: React.SyntheticEvent<T>;
+
+  // Mouse Events
+  onClick: React.MouseEvent<T>;
+  onContextMenu: React.MouseEvent<T>;
+  onDoubleClick: React.MouseEvent<T>;
+  onMouseDown: React.MouseEvent<T>;
+  onMouseEnter: React.MouseEvent<T>;
+  onMouseLeave: React.MouseEvent<T>;
+  onMouseMove: React.MouseEvent<T>;
+  onMouseOut: React.MouseEvent<T>;
+  onMouseOver: React.MouseEvent<T>;
+  onMouseUp: React.MouseEvent<T>;
+
+  // Drag Events
+  onDrag: React.DragEvent<T>;
+  onDragEnd: React.DragEvent<T>;
+  onDragEnter: React.DragEvent<T>;
+  onDragExit: React.DragEvent<T>;
+  onDragLeave: React.DragEvent<T>;
+  onDragOver: React.DragEvent<T>;
+  onDragStart: React.DragEvent<T>;
+  onDrop: React.DragEvent<T>;
+
+  // Selection Events
+  onSelect: React.SyntheticEvent<T>;
+
+  // Touch Events
+  onTouchCancel: React.TouchEvent<T>;
+  onTouchEnd: React.TouchEvent<T>;
+  onTouchMove: React.TouchEvent<T>;
+  onTouchStart: React.TouchEvent<T>;
+
+  // Pointer Events
+  onPointerDown: React.PointerEvent<T>;
+  onPointerMove: React.PointerEvent<T>;
+  onPointerUp: React.PointerEvent<T>;
+  onPointerCancel: React.PointerEvent<T>;
+  onGotPointerCapture: React.PointerEvent<T>;
+  onLostPointerCapture: React.PointerEvent<T>;
+  onPointerEnter: React.PointerEvent<T>;
+  onPointerLeave: React.PointerEvent<T>;
+  onPointerOver: React.PointerEvent<T>;
+  onPointerOut: React.PointerEvent<T>;
+
+  // UI Events
+  onScroll: React.UIEvent<T>;
+
+  // Wheel Events
+  onWheel: React.WheelEvent<T>;
+
+  // Animation Events
+  onAnimationStart: React.AnimationEvent<T>;
+  onAnimationEnd: React.AnimationEvent<T>;
+  onAnimationIteration: React.AnimationEvent<T>;
+
+  // Transition Events
+  onTransitionEnd: React.TransitionEvent<T>;
+
+  // Other events
+  onToggle: React.SyntheticEvent<T>;
+
+  // Change Events
+  onChange: React.ChangeEvent<T>;
+};
+
+type AllEvents = keyof EventMap;
+
+type EventHandler<K extends AllEvents> = (event: EventMap[K], args: unknown) => void;
 
 type Props = Record<string, unknown> & {
-  [K in AllEvents]?: EventHandler;
+  [K in AllEvents]?: EventHandler<K>;
 };
 
 type EventProps<T> = {

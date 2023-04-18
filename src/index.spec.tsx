@@ -77,6 +77,36 @@ describe('makeEventProps()', () => {
     // @ts-expect-error-next-line
     result.someInvalidProp;
   });
+
+  it('returns correct handler for onCopy (sample of clipboard events family)', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onCopy: vi.fn((event: React.ClipboardEvent<HTMLDivElement>) => {
+        // Intentionally empty
+      }),
+    };
+
+    const result = makeEventProps(props);
+
+    // @ts-expect-no-error
+    <div onCopy={result.onCopy} />;
+  });
+
+  it('returns correct handler for onCompositionEnd (sample of composition events family)', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onCompositionEnd: vi.fn((event: React.CompositionEvent<HTMLDivElement>) => {
+        // Intentionally empty
+      }),
+    };
+
+    const result = makeEventProps(props);
+
+    // @ts-expect-no-error
+    <div onCompositionEnd={result.onCompositionEnd} />;
+  });
+
+  // TODO: Add remaining events
 });
 
 describe('allEvents', () => {

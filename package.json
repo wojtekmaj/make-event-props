@@ -30,6 +30,9 @@
     "email": "kontakt@wojtekmaj.pl"
   },
   "license": "MIT",
+  "dependencies": {
+    "@types/react": "*"
+  },
   "devDependencies": {
     "eslint": "^8.26.0",
     "eslint-config-wojtekmaj": "^0.8.3",
