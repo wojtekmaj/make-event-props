@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
+import React from 'react';
 import makeEventProps, { allEvents } from './index';
 
 describe('makeEventProps()', () => {
@@ -76,6 +77,55 @@ describe('makeEventProps()', () => {
 
     // @ts-expect-error-next-line
     result.someInvalidProp;
+  });
+
+  it('should allow valid onClick handler to be passed', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent) => {
+        // Intentionally empty
+      },
+    };
+
+    // @ts-expect-no-error
+    makeEventProps(props);
+  });
+
+  it('should not allow invalid onClick handler to be passed', () => {
+    const props = {
+      onClick: 'potato',
+    };
+
+    // @ts-expect-error-next-line
+    makeEventProps(props);
+  });
+
+  it('should allow div onClick handler to be passed to div', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent<HTMLDivElement>) => {
+        // Intentionally empty
+      },
+    };
+
+    const result = makeEventProps(props);
+
+    // @ts-expect-no-error
+    <div onClick={result.onClick} />;
+  });
+
+  it('should not allow div onClick handler to be passed to button', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent<HTMLDivElement>) => {
+        // Intentionally empty
+      },
+    };
+
+    const result = makeEventProps(props);
+
+    // @ts-expect-error-next-line
+    <button onClick={result.onClick} />;
   });
 });
 
