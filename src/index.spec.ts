@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
-import makeEventProps from './index';
+import makeEventProps, { allEvents } from './index';
 
-describe('makeEventProps', () => {
+describe('makeEventProps()', () => {
   const fakeEvent = {};
 
   it('returns object with valid and only valid event callbacks', () => {
@@ -76,5 +76,12 @@ describe('makeEventProps', () => {
 
     // @ts-expect-error-next-line
     result.someInvalidProp;
+  });
+});
+
+describe('allEvents', () => {
+  it('should contain all events', () => {
+    const sortedAllEvents = new Set([...allEvents].sort());
+    expect(sortedAllEvents).toMatchSnapshot();
   });
 });
