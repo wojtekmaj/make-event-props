@@ -163,6 +163,34 @@ describe('makeEventProps()', () => {
     // @ts-expect-error-next-line
     <button onClick={result.onClick} />;
   });
+
+  it('should allow div onClick handler with extra args to be passed to div if getArgs is provided', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
+        // Intentionally empty
+      },
+    };
+
+    const result = makeEventProps(props, () => 'hello');
+
+    // @ts-expect-no-error
+    <div onClick={result.onClick} />;
+  });
+
+  it('should not allow div onClick handler with extra args to be passed to button if getArgs is provided', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
+        // Intentionally empty
+      },
+    };
+
+    const result = makeEventProps(props, () => 'hello');
+
+    // @ts-expect-error-next-line
+    <button onClick={result.onClick} />;
+  });
 });
 
 describe('allEvents', () => {

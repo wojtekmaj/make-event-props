@@ -106,12 +106,23 @@ type AllEvents = (typeof allEvents)[number];
 
 type EventHandler<ArgsType> = (event: any, args: ArgsType) => void;
 
+// Creates inferred type for event handler without args.
+type EventHandlerWithoutArgs<ArgsType, OriginalEventHandler> = OriginalEventHandler extends (
+  event: infer Event,
+  args: ArgsType,
+) => void
+  ? (event: Event) => void
+  : never;
+
 type Props<ArgsType> = Record<string, unknown> & {
   [K in AllEvents]?: EventHandler<ArgsType>;
 };
 
-type EventProps<PropsType> = {
-  [K in keyof PropsType as K extends AllEvents ? K : never]: PropsType[K];
+type EventProps<ArgsType, PropsType> = {
+  [K in keyof PropsType as K extends AllEvents ? K : never]: EventHandlerWithoutArgs<
+    ArgsType,
+    PropsType[K]
+  >;
 };
 
 /**
@@ -123,8 +134,8 @@ type EventProps<PropsType> = {
 export default function makeEventProps<ArgsType, PropsType extends Props<ArgsType>>(
   props: PropsType,
   getArgs?: (eventName: string) => ArgsType,
-): EventProps<PropsType> {
-  const eventProps: EventProps<PropsType> = {} as EventProps<PropsType>;
+): EventProps<ArgsType, PropsType> {
+  const eventProps: EventProps<ArgsType, PropsType> = {} as EventProps<ArgsType, PropsType>;
 
   allEvents.forEach((eventName) => {
     const eventHandler = props[eventName];
@@ -133,12 +144,14 @@ export default function makeEventProps<ArgsType, PropsType extends Props<ArgsTyp
       return;
     }
 
-    if (!getArgs) {
-      eventProps[eventName] = eventHandler;
-      return;
+    if (getArgs) {
+      eventProps[eventName] = ((event) => eventHandler(event, getArgs(eventName))) as EventProps<
+        ArgsType,
+        PropsType
+      >[typeof eventName];
+    } else {
+      eventProps[eventName] = eventHandler as EventProps<ArgsType, PropsType>[typeof eventName];
     }
-
-    eventProps[eventName] = (event) => eventHandler(event, getArgs(eventName));
   });
 
   return eventProps;
