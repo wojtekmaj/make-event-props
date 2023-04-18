@@ -114,7 +114,7 @@ type EventHandlerWithoutArgs<ArgsType, OriginalEventHandler> = OriginalEventHand
   ? (event: Event) => void
   : never;
 
-type EventProps<ArgsType> = {
+export type EventProps<ArgsType> = {
   [K in AllEvents]?: EventHandler<ArgsType>;
 };
 
