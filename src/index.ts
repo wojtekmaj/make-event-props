@@ -114,11 +114,13 @@ type EventHandlerWithoutArgs<ArgsType, OriginalEventHandler> = OriginalEventHand
   ? (event: Event) => void
   : never;
 
-type Props<ArgsType> = Record<string, unknown> & {
+type EventProps<ArgsType> = {
   [K in AllEvents]?: EventHandler<ArgsType>;
 };
 
-type EventProps<ArgsType, PropsType> = {
+type Props<ArgsType> = Record<string, unknown> & EventProps<ArgsType>;
+
+type EventPropsWithoutArgs<ArgsType, PropsType> = {
   [K in keyof PropsType as K extends AllEvents ? K : never]: EventHandlerWithoutArgs<
     ArgsType,
     PropsType[K]
@@ -134,10 +136,18 @@ type EventProps<ArgsType, PropsType> = {
 export default function makeEventProps<
   ArgsType,
   PropsType extends Props<ArgsType> = Props<ArgsType>,
->(props: PropsType, getArgs?: (eventName: string) => ArgsType): EventProps<ArgsType, PropsType> {
-  const eventProps: EventProps<ArgsType, PropsType> = {} as EventProps<ArgsType, PropsType>;
+>(
+  props: PropsType,
+  getArgs?: (eventName: string) => ArgsType,
+): EventPropsWithoutArgs<ArgsType, PropsType> {
+  const eventProps: EventPropsWithoutArgs<ArgsType, PropsType> = {} as EventPropsWithoutArgs<
+    ArgsType,
+    PropsType
+  >;
 
   allEvents.forEach((eventName) => {
+    type EventHandlerType = EventPropsWithoutArgs<ArgsType, PropsType>[typeof eventName];
+
     const eventHandler = props[eventName];
 
     if (!eventHandler) {
@@ -145,12 +155,10 @@ export default function makeEventProps<
     }
 
     if (getArgs) {
-      eventProps[eventName] = ((event) => eventHandler(event, getArgs(eventName))) as EventProps<
-        ArgsType,
-        PropsType
-      >[typeof eventName];
+      eventProps[eventName] = ((event) =>
+        eventHandler(event, getArgs(eventName))) as EventHandlerType;
     } else {
-      eventProps[eventName] = eventHandler as EventProps<ArgsType, PropsType>[typeof eventName];
+      eventProps[eventName] = eventHandler as EventHandlerType;
     }
   });
 
