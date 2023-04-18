@@ -191,6 +191,44 @@ describe('makeEventProps()', () => {
     // @ts-expect-error-next-line
     <button onClick={result.onClick} />;
   });
+
+  it('should allow onClick handler with valid extra args to be passed with args explicitly typed', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
+        // Intentionally empty
+      },
+    };
+
+    // @ts-expect-no-error
+    makeEventProps<string>(props, () => 'hello');
+  });
+
+  it('should not allow onClick handler with invalid extra args to be passed with args explicitly typed', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent<HTMLDivElement>, args: number) => {
+        // Intentionally empty
+      },
+    };
+
+    // @ts-expect-error-next-line
+    makeEventProps<string>(props, () => 'hello');
+  });
+
+  it('should allow getArgs returning valid type to be passed with args explicitly typed', () => {
+    const props = {};
+
+    // @ts-expect-no-error
+    makeEventProps<string>(props, () => 'hello');
+  });
+
+  it('should not allow getArgs returning invalid type to be passed with args explicitly typed', () => {
+    const props = {};
+
+    // @ts-expect-error-next-line
+    makeEventProps<string>(props, () => 5);
+  });
 });
 
 describe('allEvents', () => {
