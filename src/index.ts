@@ -131,10 +131,10 @@ type EventProps<ArgsType, PropsType> = {
  * @param {Function=} getArgs A function that returns argument(s) on-event callbacks
  *   shall be curried with.
  */
-export default function makeEventProps<ArgsType, PropsType extends Props<ArgsType>>(
-  props: PropsType,
-  getArgs?: (eventName: string) => ArgsType,
-): EventProps<ArgsType, PropsType> {
+export default function makeEventProps<
+  ArgsType,
+  PropsType extends Props<ArgsType> = Props<ArgsType>,
+>(props: PropsType, getArgs?: (eventName: string) => ArgsType): EventProps<ArgsType, PropsType> {
   const eventProps: EventProps<ArgsType, PropsType> = {} as EventProps<ArgsType, PropsType>;
 
   allEvents.forEach((eventName) => {
