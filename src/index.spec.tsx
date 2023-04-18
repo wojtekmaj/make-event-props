@@ -100,6 +100,42 @@ describe('makeEventProps()', () => {
     makeEventProps(props);
   });
 
+  it('should allow onClick handler with extra args to be passed if getArgs is provided', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent, args: string) => {
+        // Intentionally empty
+      },
+    };
+
+    // @ts-expect-no-error
+    makeEventProps(props, () => 'hello');
+  });
+
+  it('should not allow onClick handler with extra args to be passed if getArgs is not provided', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent, args: string) => {
+        // Intentionally empty
+      },
+    };
+
+    // @ts-expect-error-next-line
+    makeEventProps(props);
+  });
+
+  it('should not allow onClick handler with extra args to be passed if getArgs is provided but returns different type', () => {
+    const props = {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onClick: (event: React.MouseEvent, args: string) => {
+        // Intentionally empty
+      },
+    };
+
+    // @ts-expect-error-next-line
+    makeEventProps(props, () => 5);
+  });
+
   it('should allow div onClick handler to be passed to div', () => {
     const props = {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -104,14 +104,14 @@ export const allEvents = [
 
 type AllEvents = (typeof allEvents)[number];
 
-type EventHandler = (event: any, args: any) => void;
+type EventHandler<ArgsType> = (event: any, args: ArgsType) => void;
 
-type Props = Record<string, unknown> & {
-  [K in AllEvents]?: EventHandler;
+type Props<ArgsType> = Record<string, unknown> & {
+  [K in AllEvents]?: EventHandler<ArgsType>;
 };
 
-type EventProps<T> = {
-  [K in keyof T as K extends AllEvents ? K : never]: T[K];
+type EventProps<PropsType> = {
+  [K in keyof PropsType as K extends AllEvents ? K : never]: PropsType[K];
 };
 
 /**
@@ -120,11 +120,11 @@ type EventProps<T> = {
  * @param {Function=} getArgs A function that returns argument(s) on-event callbacks
  *   shall be curried with.
  */
-export default function makeEventProps<T extends Props, U>(
-  props: T,
-  getArgs?: (eventName: string) => U,
-): EventProps<T> {
-  const eventProps: EventProps<T> = {} as EventProps<T>;
+export default function makeEventProps<ArgsType, PropsType extends Props<ArgsType>>(
+  props: PropsType,
+  getArgs?: (eventName: string) => ArgsType,
+): EventProps<PropsType> {
+  const eventProps: EventProps<PropsType> = {} as EventProps<PropsType>;
 
   allEvents.forEach((eventName) => {
     const eventHandler = props[eventName];
