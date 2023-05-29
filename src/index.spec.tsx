@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import React from 'react';
+
 import makeEventProps, { allEvents } from './index.js';
 
 describe('makeEventProps()', () => {
