@@ -104,6 +104,7 @@ export const allEvents = [
 
 type AllEvents = (typeof allEvents)[number];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type EventHandler<ArgsType> = (event: any, args: ArgsType) => void;
 
 // Creates inferred type for event handler without args.
