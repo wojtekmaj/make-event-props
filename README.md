@@ -11,18 +11,15 @@ This package allows you to pass event callback props to a rendered DOM element w
 - Install by executing `npm install make-event-props` or `yarn add make-event-props`.
 - Import by adding `import makeEventProps from 'make-event-props'`.
 - Create your event props object:
-  ```js
-  get eventProps() {
-    return makeEventProps(this.props, (eventName) => additionalArgs);
-  }
+  ```ts
+  const eventProps = useMemo(
+    () => makeEventProps(props, (eventName) => additionalArgs),
+    [additionalArgs],
+  );
   ```
 - Use your event props:
-  ```js
-  render() {
-    return (
-      <div {...this.eventProps} />
-    );
-  }
+  ```tsx
+  return <div {...eventProps} />;
   ```
 
 ## License
