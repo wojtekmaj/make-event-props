@@ -128,19 +128,20 @@ type EventPropsWithoutArgs<ArgsType, PropsType> = {
   >;
 };
 
+type GetArgs<ArgsType> = (eventName: string) => ArgsType;
+
 /**
  * Returns an object with on-event callback props curried with provided args.
- * @param {Object} props Props passed to a component.
- * @param {Function=} getArgs A function that returns argument(s) on-event callbacks
+ *
+ * @template ArgsType Type of arguments to curry on-event callbacks with.
+ * @param {PropsType} props Props passed to a component.
+ * @param {GetArgs<ArgsType>} [getArgs] A function that returns argument(s) on-event callbacks
  *   shall be curried with.
  */
 export default function makeEventProps<
   ArgsType,
   PropsType extends Props<ArgsType> = Props<ArgsType>,
->(
-  props: PropsType,
-  getArgs?: (eventName: string) => ArgsType,
-): EventPropsWithoutArgs<ArgsType, PropsType> {
+>(props: PropsType, getArgs?: GetArgs<ArgsType>): EventPropsWithoutArgs<ArgsType, PropsType> {
   const eventProps: EventPropsWithoutArgs<ArgsType, PropsType> = {} as EventPropsWithoutArgs<
     ArgsType,
     PropsType
