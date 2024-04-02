@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { assertType, describe, expect, it, vi } from 'vitest';
 import React from 'react';
 
 import makeEventProps, { allEvents } from './index.js';
@@ -65,8 +65,7 @@ describe('makeEventProps()', () => {
 
     const result = makeEventProps(props);
 
-    // @ts-expect-no-error
-    result.onClick;
+    assertType<React.MouseEventHandler>(result.onClick);
   });
 
   it('should filter out invalid event props', () => {
@@ -76,8 +75,7 @@ describe('makeEventProps()', () => {
 
     const result = makeEventProps(props);
 
-    // @ts-expect-error-next-line
-    result.someInvalidProp;
+    expect(result).not.toHaveProperty('someInvalidProp');
   });
 
   it('should allow valid onClick handler to be passed', () => {
