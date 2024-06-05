@@ -104,7 +104,7 @@ export const allEvents = [
 
 type AllEvents = (typeof allEvents)[number];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: Impossible to type
 type EventHandler<ArgsType> = (event: any, args: ArgsType) => void;
 
 // Creates inferred type for event handler without args.
@@ -147,13 +147,13 @@ export default function makeEventProps<
     PropsType
   >;
 
-  allEvents.forEach((eventName) => {
+  for (const eventName of allEvents) {
     type EventHandlerType = EventPropsWithoutArgs<ArgsType, PropsType>[typeof eventName];
 
     const eventHandler = props[eventName];
 
     if (!eventHandler) {
-      return;
+      continue;
     }
 
     if (getArgs) {
@@ -162,7 +162,7 @@ export default function makeEventProps<
     } else {
       eventProps[eventName] = eventHandler as EventHandlerType;
     }
-  });
+  }
 
   return eventProps;
 }
