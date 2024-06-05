@@ -159,7 +159,7 @@ describe('makeEventProps()', () => {
     const result = makeEventProps(props);
 
     // @ts-expect-error-next-line
-    <button onClick={result.onClick} />;
+    <button onClick={result.onClick} type="submit" />;
   });
 
   it('should allow div onClick handler with extra args to be passed to div if getArgs is provided', () => {
@@ -187,7 +187,7 @@ describe('makeEventProps()', () => {
     const result = makeEventProps(props, () => 'hello');
 
     // @ts-expect-error-next-line
-    <button onClick={result.onClick} />;
+    <button onClick={result.onClick} type="submit" />;
   });
 
   it('should allow onClick handler with valid extra args to be passed with args explicitly typed', () => {

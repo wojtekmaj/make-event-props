@@ -147,13 +147,13 @@ export default function makeEventProps<
     PropsType
   >;
 
-  allEvents.forEach((eventName) => {
+  for (const eventName of allEvents) {
     type EventHandlerType = EventPropsWithoutArgs<ArgsType, PropsType>[typeof eventName];
 
     const eventHandler = props[eventName];
 
     if (!eventHandler) {
-      return;
+      continue;
     }
 
     if (getArgs) {
@@ -162,7 +162,7 @@ export default function makeEventProps<
     } else {
       eventProps[eventName] = eventHandler as EventHandlerType;
     }
-  });
+  }
 
   return eventProps;
 }
