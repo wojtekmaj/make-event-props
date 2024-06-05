@@ -79,7 +79,6 @@ describe('makeEventProps()', () => {
 
   it('should allow valid onClick handler to be passed', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent) => {
         // Intentionally empty
       },
@@ -100,7 +99,6 @@ describe('makeEventProps()', () => {
 
   it('should allow onClick handler with extra args to be passed if getArgs is provided', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent, args: string) => {
         // Intentionally empty
       },
@@ -112,7 +110,6 @@ describe('makeEventProps()', () => {
 
   it('should not allow onClick handler with extra args to be passed if getArgs is not provided', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent, args: string) => {
         // Intentionally empty
       },
@@ -124,7 +121,6 @@ describe('makeEventProps()', () => {
 
   it('should not allow onClick handler with extra args to be passed if getArgs is provided but returns different type', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent, args: string) => {
         // Intentionally empty
       },
@@ -136,7 +132,6 @@ describe('makeEventProps()', () => {
 
   it('should allow div onClick handler to be passed to div', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent<HTMLDivElement>) => {
         // Intentionally empty
       },
@@ -145,12 +140,12 @@ describe('makeEventProps()', () => {
     const result = makeEventProps(props);
 
     // @ts-expect-no-error
+    // biome-ignore lint/a11y/useKeyWithClickEvents: This is only a test
     <div onClick={result.onClick} />;
   });
 
   it('should not allow div onClick handler to be passed to button', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent<HTMLDivElement>) => {
         // Intentionally empty
       },
@@ -164,7 +159,6 @@ describe('makeEventProps()', () => {
 
   it('should allow div onClick handler with extra args to be passed to div if getArgs is provided', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
         // Intentionally empty
       },
@@ -173,12 +167,12 @@ describe('makeEventProps()', () => {
     const result = makeEventProps(props, () => 'hello');
 
     // @ts-expect-no-error
+    // biome-ignore lint/a11y/useKeyWithClickEvents: This is only a test
     <div onClick={result.onClick} />;
   });
 
   it('should not allow div onClick handler with extra args to be passed to button if getArgs is provided', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
         // Intentionally empty
       },
@@ -192,7 +186,6 @@ describe('makeEventProps()', () => {
 
   it('should allow onClick handler with valid extra args to be passed with args explicitly typed', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
         // Intentionally empty
       },
@@ -204,7 +197,6 @@ describe('makeEventProps()', () => {
 
   it('should not allow onClick handler with invalid extra args to be passed with args explicitly typed', () => {
     const props = {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onClick: (event: React.MouseEvent<HTMLDivElement>, args: number) => {
         // Intentionally empty
       },

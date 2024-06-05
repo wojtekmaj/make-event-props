@@ -104,7 +104,7 @@ export const allEvents = [
 
 type AllEvents = (typeof allEvents)[number];
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: Impossible to type
 type EventHandler<ArgsType> = (event: any, args: ArgsType) => void;
 
 // Creates inferred type for event handler without args.
