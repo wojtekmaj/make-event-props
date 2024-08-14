@@ -79,7 +79,7 @@ describe('makeEventProps()', () => {
 
   it('should allow valid onClick handler to be passed', () => {
     const props = {
-      onClick: (event: React.MouseEvent) => {
+      onClick: (_event: React.MouseEvent) => {
         // Intentionally empty
       },
     };
@@ -99,7 +99,7 @@ describe('makeEventProps()', () => {
 
   it('should allow onClick handler with extra args to be passed if getArgs is provided', () => {
     const props = {
-      onClick: (event: React.MouseEvent, args: string) => {
+      onClick: (_event: React.MouseEvent, _args: string) => {
         // Intentionally empty
       },
     };
@@ -110,7 +110,7 @@ describe('makeEventProps()', () => {
 
   it('should not allow onClick handler with extra args to be passed if getArgs is not provided', () => {
     const props = {
-      onClick: (event: React.MouseEvent, args: string) => {
+      onClick: (_event: React.MouseEvent, _args: string) => {
         // Intentionally empty
       },
     };
@@ -121,7 +121,7 @@ describe('makeEventProps()', () => {
 
   it('should not allow onClick handler with extra args to be passed if getArgs is provided but returns different type', () => {
     const props = {
-      onClick: (event: React.MouseEvent, args: string) => {
+      onClick: (_event: React.MouseEvent, _args: string) => {
         // Intentionally empty
       },
     };
@@ -132,7 +132,7 @@ describe('makeEventProps()', () => {
 
   it('should allow div onClick handler to be passed to div', () => {
     const props = {
-      onClick: (event: React.MouseEvent<HTMLDivElement>) => {
+      onClick: (_event: React.MouseEvent<HTMLDivElement>) => {
         // Intentionally empty
       },
     };
@@ -146,7 +146,7 @@ describe('makeEventProps()', () => {
 
   it('should not allow div onClick handler to be passed to button', () => {
     const props = {
-      onClick: (event: React.MouseEvent<HTMLDivElement>) => {
+      onClick: (_event: React.MouseEvent<HTMLDivElement>) => {
         // Intentionally empty
       },
     };
@@ -159,7 +159,7 @@ describe('makeEventProps()', () => {
 
   it('should allow div onClick handler with extra args to be passed to div if getArgs is provided', () => {
     const props = {
-      onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
+      onClick: (_event: React.MouseEvent<HTMLDivElement>, _args: string) => {
         // Intentionally empty
       },
     };
@@ -173,7 +173,7 @@ describe('makeEventProps()', () => {
 
   it('should not allow div onClick handler with extra args to be passed to button if getArgs is provided', () => {
     const props = {
-      onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
+      onClick: (_event: React.MouseEvent<HTMLDivElement>, _args: string) => {
         // Intentionally empty
       },
     };
@@ -186,7 +186,7 @@ describe('makeEventProps()', () => {
 
   it('should allow onClick handler with valid extra args to be passed with args explicitly typed', () => {
     const props = {
-      onClick: (event: React.MouseEvent<HTMLDivElement>, args: string) => {
+      onClick: (_event: React.MouseEvent<HTMLDivElement>, _args: string) => {
         // Intentionally empty
       },
     };
@@ -197,7 +197,7 @@ describe('makeEventProps()', () => {
 
   it('should not allow onClick handler with invalid extra args to be passed with args explicitly typed', () => {
     const props = {
-      onClick: (event: React.MouseEvent<HTMLDivElement>, args: number) => {
+      onClick: (_event: React.MouseEvent<HTMLDivElement>, _args: number) => {
         // Intentionally empty
       },
     };
