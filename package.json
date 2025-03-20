@@ -1,6 +1,6 @@
 {
   "name": "make-event-props",
-  "version": "1.6.2",
+  "version": "2.0.0",
   "description": "Returns an object with on-event callback props curried with provided args.",
   "type": "module",
   "sideEffects": false,
