@@ -141,6 +141,7 @@ describe('makeEventProps()', () => {
 
     // @ts-expect-no-error
     // biome-ignore lint/a11y/useKeyWithClickEvents: This is only a test
+    // biome-ignore lint/a11y/noStaticElementInteractions: This is only a test
     <div onClick={result.onClick} />;
   });
 
@@ -168,6 +169,7 @@ describe('makeEventProps()', () => {
 
     // @ts-expect-no-error
     // biome-ignore lint/a11y/useKeyWithClickEvents: This is only a test
+    // biome-ignore lint/a11y/noStaticElementInteractions: This is only a test
     <div onClick={result.onClick} />;
   });
 
