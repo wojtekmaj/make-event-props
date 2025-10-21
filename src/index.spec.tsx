@@ -84,7 +84,6 @@ describe('makeEventProps()', () => {
       },
     };
 
-    // @ts-expect-no-error
     makeEventProps(props);
   });
 
@@ -104,7 +103,6 @@ describe('makeEventProps()', () => {
       },
     };
 
-    // @ts-expect-no-error
     makeEventProps(props, () => 'hello');
   });
 
@@ -139,7 +137,6 @@ describe('makeEventProps()', () => {
 
     const result = makeEventProps(props);
 
-    // @ts-expect-no-error
     // biome-ignore lint/a11y/useKeyWithClickEvents: This is only a test
     // biome-ignore lint/a11y/noStaticElementInteractions: This is only a test
     <div onClick={result.onClick} />;
@@ -167,7 +164,6 @@ describe('makeEventProps()', () => {
 
     const result = makeEventProps(props, () => 'hello');
 
-    // @ts-expect-no-error
     // biome-ignore lint/a11y/useKeyWithClickEvents: This is only a test
     // biome-ignore lint/a11y/noStaticElementInteractions: This is only a test
     <div onClick={result.onClick} />;
@@ -193,7 +189,6 @@ describe('makeEventProps()', () => {
       },
     };
 
-    // @ts-expect-no-error
     makeEventProps<string>(props, () => 'hello');
   });
 
@@ -211,7 +206,6 @@ describe('makeEventProps()', () => {
   it('should allow getArgs returning valid type to be passed with args explicitly typed', () => {
     const props = {};
 
-    // @ts-expect-no-error
     makeEventProps<string>(props, () => 'hello');
   });
 
